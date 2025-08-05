@@ -85,7 +85,17 @@ state: false
 - **Toggles**: Click any toggle to see it smoothly slide from left to right (or right to left)
 - **Multi-State Buttons**: Click to cycle through all states (e.g., Not Started → In Progress → Complete → Not Started...)
 - The toggle will change color from gray (off) to green (on)
-- Multi-state buttons change color based on their current state (red → orange → green for the default 3-state)
+- Multi-state buttons change color based on their current state with a rich color palette:
+  - **State 0**: Red (Not Started, Critical, etc.)
+  - **State 1**: Orange (In Progress, Warning, etc.)
+  - **State 2**: Green (Complete, Success, etc.)
+  - **State 3**: Blue (Review, Info, etc.)
+  - **State 4**: Purple (Testing, Special, etc.)
+  - **State 5**: Blue-Grey (Pending, Neutral, etc.)
+  - **State 6**: Brown (Archived, Old, etc.)
+  - **State 7**: Deep Orange (Urgent, Priority, etc.)
+  - **State 8**: Teal (Active, Current, etc.)
+  - **State 9**: Deep Purple (Final, Premium, etc.)
 - **State is automatically saved** - the values in your markdown are updated when you click
 - Each toggle and multi-state button maintains its own state permanently
 - **Both formats work everywhere** - inside tables, outside tables, in lists, anywhere!
@@ -110,6 +120,12 @@ Here's my progress: {{toggle:progress1:Task Complete:false}} - Still working on 
 **Multi-state buttons for status tracking:**
 Project status: {{multistate:project1:Current Phase:1:Planning,Development,Testing,Deployment}}
 
+**Multi-state with more options:**
+Task priority: {{multistate:priority1:Priority Level:2:Low,Medium,High,Critical,Urgent}}
+
+**Complex workflow tracking:**
+Review process: {{multistate:review1:Review Stage:0:Submitted,Under Review,Changes Requested,Approved,Published,Archived}}
+
 **Label-less toggles for compact use:**
 Quick settings: Dark mode {{toggle:dark::true}} | Notifications {{toggle:notif::false}} | Auto-save {{toggle:save::true}}
 
@@ -126,6 +142,22 @@ id: project-status
 label: Development Phase
 state: 2
 states: Planning,Design,Development,Testing,Review,Complete
+```
+
+**Advanced workflow with 8 states:**
+```multistate
+id: ticket-status
+label: Support Ticket Status
+state: 1
+states: New,Assigned,In Progress,Waiting Customer,Escalated,Testing,Resolved,Closed
+```
+
+**Quality control with 5 levels:**
+```multistate
+id: quality-check
+label: Quality Level
+state: 3
+states: Failed,Poor,Acceptable,Good,Excellent
 ```
 
 ## Settings
