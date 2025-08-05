@@ -6,6 +6,7 @@ An Obsidian plugin that creates beautiful, interactive toggle switches that slid
 
 - **Visual Toggle Switches**: Create smooth, animated toggle switches that slide from left to right
 - **Multi-State Buttons**: Create buttons that cycle through multiple states (e.g., Not Started → In Progress → Complete)
+- **User Dropdowns with Avatars**: Create user selection dropdowns with beautiful circular avatars showing user initials
 - **Customizable Labels**: Add custom labels to your toggles and multi-state buttons
 - **Easy Insertion**: Insert toggles via ribbon icon or command palette
 - **Configurable Defaults**: Set default toggle state and label in settings
@@ -100,6 +101,9 @@ state: false
 - **Toggles**: Click any toggle to see it smoothly slide from left to right (or right to left)
 - **Multi-State Buttons**: Click to cycle through all states (e.g., Not Started → In Progress → Complete → Not Started...)
 - **User Dropdowns**: Click to open a dropdown and select from available users configured in settings
+  - Users are displayed with circular avatars showing their initials
+  - Each user gets a unique, consistent color based on their name
+  - "Unassigned" appears with gray color and "UN" initials
 - The toggle will change color from gray (off) to green (on)
 - Multi-state buttons change color based on their current state with a rich color palette:
   - **State 0**: Red (Not Started, Critical, etc.)
@@ -195,6 +199,19 @@ id: team-lead
 label: Team Lead
 selected: Alex Johnson
 ```
+
+### User Avatar System
+
+User dropdowns feature a beautiful avatar system:
+
+- **Circular Avatars**: Each user gets a circular avatar with their initials
+- **Consistent Colors**: Users are assigned consistent, pleasant colors based on their name
+- **Smart Initials**: 
+  - Single names use first 2 characters (e.g., "Sarah" → "SA")
+  - Multiple names use first letter of first 2 words (e.g., "John Doe" → "JD")
+  - "Unassigned" shows gray "UN" avatar
+- **16 Unique Colors**: Automatic color assignment from a curated palette of 16 distinct colors
+- **Dropdown Interface**: Click to expand and see all users with their avatars
 
 ## Settings
 
