@@ -1,0 +1,11 @@
+{
+	"id": "togglify",
+	"name": "Togglify",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "A plugin that creates interactive toggle switches that slide from left to right.",
+	"author": "Your Name",
+	"authorUrl": "",
+	"fundingUrl": "",
+	"isDesktopOnly": false
+}

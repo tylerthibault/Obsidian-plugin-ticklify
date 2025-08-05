@@ -1,0 +1,15 @@
+# Obsidian Plugin - Togglify
+
+node_modules/
+main.js
+*.tgz
+.DS_Store
+
+# history
+.history/
+
+# vscode
+.vscode/
+
+# .github
+.github/
