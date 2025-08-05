@@ -16,6 +16,7 @@ An Obsidian plugin that creates beautiful, interactive toggle switches that slid
 Access settings via: Settings → Community Plugins → Togglify → Options
 
 - **Use No Label by Default**: When enabled, toggles inserted via commands or ribbon will have no label text. When disabled, you'll be prompted to enter a label.
+- **User Management**: Manage the list of available users for user dropdown elements. Add or remove users as needed for your workflows.
 
 ## Smart Format Detection
 
@@ -43,6 +44,8 @@ This means you only need to remember one command - the plugin handles the format
    - `Ctrl/Cmd + P` → "Insert Toggle with Label" (prompts for custom label)
    - `Ctrl/Cmd + P` → "Insert Multi-State Button" (creates a 3-state button)
    - `Ctrl/Cmd + P` → "Insert Multi-State Button with Label" (prompts for custom label)
+   - `Ctrl/Cmd + P` → "Insert User Dropdown" (creates a user selection dropdown)
+   - `Ctrl/Cmd + P` → "Insert User Dropdown with Label" (prompts for custom label)
 
 **Block format** (standalone toggles):
 ```togglify
@@ -69,6 +72,18 @@ states: Not Started,In Progress,Complete
 {{multistate:multistate-1234567890:Task Status:0:Not Started,In Progress,Complete}}
 ```
 
+**User dropdown block format**:
+```userdropdown
+id: userdropdown-1234567890
+label: Assigned to
+selected: John Doe
+```
+
+**User dropdown inline format**:
+```
+{{userdropdown:userdropdown-1234567890:Assigned to:John Doe}}
+```
+
 **No label format** (just the toggle switch):
 ```
 {{toggle:toggle-1234567890::false}}
@@ -84,6 +99,7 @@ state: false
 
 - **Toggles**: Click any toggle to see it smoothly slide from left to right (or right to left)
 - **Multi-State Buttons**: Click to cycle through all states (e.g., Not Started → In Progress → Complete → Not Started...)
+- **User Dropdowns**: Click to open a dropdown and select from available users configured in settings
 - The toggle will change color from gray (off) to green (on)
 - Multi-state buttons change color based on their current state with a rich color palette:
   - **State 0**: Red (Not Started, Critical, etc.)
@@ -104,11 +120,11 @@ state: false
 
 Toggles and multi-state buttons work perfectly in Obsidian tables! Use the inline format:
 
-| Task | Status | Complete | Priority | Progress |
-|------|--------|----------|----------|----------|
-| Write docs | In Progress | {{toggle:task1:Done:false}} | {{toggle:urgent1::true}} | {{multistate:prog1::1:Not Started,In Progress,Complete}} |
-| Test feature | Done | {{toggle:task2:Finished:true}} | {{toggle:urgent2::false}} | {{multistate:prog2::2:Not Started,In Progress,Complete}} |
-| Deploy | Pending | {{toggle:task3:Ready:false}} | {{toggle:urgent3::false}} | {{multistate:prog3::0:Not Started,In Progress,Complete}} |
+| Task | Status | Complete | Priority | Progress | Assigned |
+|------|--------|----------|----------|----------|----------|
+| Write docs | In Progress | {{toggle:task1:Done:false}} | {{toggle:urgent1::true}} | {{multistate:prog1::1:Not Started,In Progress,Complete}} | {{userdropdown:assign1::John Doe}} |
+| Test feature | Done | {{toggle:task2:Finished:true}} | {{toggle:urgent2::false}} | {{multistate:prog2::2:Not Started,In Progress,Complete}} | {{userdropdown:assign2::Jane Smith}} |
+| Deploy | Pending | {{toggle:task3:Ready:false}} | {{toggle:urgent3::false}} | {{multistate:prog3::0:Not Started,In Progress,Complete}} | {{userdropdown:assign3::Alex Johnson}} |
 
 ### Using Toggles Outside Tables
 
@@ -122,6 +138,12 @@ Project status: {{multistate:project1:Current Phase:1:Planning,Development,Testi
 
 **Multi-state with more options:**
 Task priority: {{multistate:priority1:Priority Level:2:Low,Medium,High,Critical,Urgent}}
+
+**User assignment for tasks:**
+Task assigned to: {{userdropdown:taskowner1:Owner:John Doe}}
+
+**Multiple user assignments:**
+Project team: Lead {{userdropdown:lead1::Jane Smith}} | Developer {{userdropdown:dev1::Alex Johnson}} | Tester {{userdropdown:test1::John Doe}}
 
 **Complex workflow tracking:**
 Review process: {{multistate:review1:Review Stage:0:Submitted,Under Review,Changes Requested,Approved,Published,Archived}}
@@ -160,12 +182,31 @@ state: 3
 states: Failed,Poor,Acceptable,Good,Excellent
 ```
 
+**User assignment block format:**
+```userdropdown
+id: project-manager
+label: Project Manager
+selected: Jane Smith
+```
+
+**Team member assignment:**
+```userdropdown
+id: team-lead
+label: Team Lead
+selected: Alex Johnson
+```
+
 ## Settings
 
 Access plugin settings via: Settings → Community Plugins → Togglify
 
 - **Default Toggle State**: Choose whether new toggles start as on or off
 - **Default Toggle Label**: Set the default text that appears next to toggles
+- **Use No Label by Default**: When enabled, new elements will have no label by default
+- **User Management**: Add, edit, and remove users for dropdown selection
+  - Add new users to make them available in user dropdowns
+  - Delete users that are no longer needed
+  - Users are displayed in a table for easy management
 
 ## Development
 

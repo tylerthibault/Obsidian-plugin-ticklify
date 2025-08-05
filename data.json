@@ -1,5 +1,9 @@
 {
   "defaultToggleState": false,
   "toggleLabel": " ",
-  "useNoLabel": true
+  "useNoLabel": true,
+  "users": [
+    "Jordan",
+    "Tyler"
+  ]
 }
