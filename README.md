@@ -5,10 +5,11 @@ An Obsidian plugin that creates beautiful, interactive toggle switches that slid
 ## Features
 
 - **Visual Toggle Switches**: Create smooth, animated toggle switches that slide from left to right
-- **Customizable Labels**: Add custom labels to your toggles
+- **Multi-State Buttons**: Create buttons that cycle through multiple states (e.g., Not Started → In Progress → Complete)
+- **Customizable Labels**: Add custom labels to your toggles and multi-state buttons
 - **Easy Insertion**: Insert toggles via ribbon icon or command palette
 - **Configurable Defaults**: Set default toggle state and label in settings
-- **Interactive**: Click toggles to see smooth left-to-right animation
+- **Interactive**: Click toggles to see smooth left-to-right animation, click multi-state buttons to cycle through states
 
 ## Plugin Settings
 
@@ -40,6 +41,8 @@ This means you only need to remember one command - the plugin handles the format
 2. **Via Command Palette**: 
    - `Ctrl/Cmd + P` → "Insert Toggle" (automatically chooses inline or block format)
    - `Ctrl/Cmd + P` → "Insert Toggle with Label" (prompts for custom label)
+   - `Ctrl/Cmd + P` → "Insert Multi-State Button" (creates a 3-state button)
+   - `Ctrl/Cmd + P` → "Insert Multi-State Button with Label" (prompts for custom label)
 
 **Block format** (standalone toggles):
 ```togglify
@@ -48,9 +51,22 @@ label: Your Label
 state: false
 ```
 
+**Multi-state block format**:
+```multistate
+id: multistate-1234567890
+label: Task Status
+state: 0
+states: Not Started,In Progress,Complete
+```
+
 **Inline format** (works in tables, lists, anywhere):
 ```
 {{toggle:toggle-1234567890:Your Label:false}}
+```
+
+**Multi-state inline format**:
+```
+{{multistate:multistate-1234567890:Task Status:0:Not Started,In Progress,Complete}}
 ```
 
 **No label format** (just the toggle switch):
@@ -66,28 +82,33 @@ state: false
 
 ### Toggle Interaction
 
-- Click any toggle to see it smoothly slide from left to right (or right to left)
+- **Toggles**: Click any toggle to see it smoothly slide from left to right (or right to left)
+- **Multi-State Buttons**: Click to cycle through all states (e.g., Not Started → In Progress → Complete → Not Started...)
 - The toggle will change color from gray (off) to green (on)
-- **State is automatically saved** - the `true`/`false` value in your markdown is updated when you click
-- Each toggle maintains its own state permanently
+- Multi-state buttons change color based on their current state (red → orange → green for the default 3-state)
+- **State is automatically saved** - the values in your markdown are updated when you click
+- Each toggle and multi-state button maintains its own state permanently
 - **Both formats work everywhere** - inside tables, outside tables, in lists, anywhere!
 
 ### Using Toggles in Tables
 
-Toggles work perfectly in Obsidian tables! Use the inline format:
+Toggles and multi-state buttons work perfectly in Obsidian tables! Use the inline format:
 
-| Task | Status | Complete | Urgent |
-|------|--------|----------|--------|
-| Write docs | In Progress | {{toggle:task1:Done:false}} | {{toggle:urgent1::true}} |
-| Test feature | Done | {{toggle:task2:Finished:true}} | {{toggle:urgent2::false}} |
-| Deploy | Pending | {{toggle:task3:Ready:false}} | {{toggle:urgent3::false}} |
+| Task | Status | Complete | Priority | Progress |
+|------|--------|----------|----------|----------|
+| Write docs | In Progress | {{toggle:task1:Done:false}} | {{toggle:urgent1::true}} | {{multistate:prog1::1:Not Started,In Progress,Complete}} |
+| Test feature | Done | {{toggle:task2:Finished:true}} | {{toggle:urgent2::false}} | {{multistate:prog2::2:Not Started,In Progress,Complete}} |
+| Deploy | Pending | {{toggle:task3:Ready:false}} | {{toggle:urgent3::false}} | {{multistate:prog3::0:Not Started,In Progress,Complete}} |
 
 ### Using Toggles Outside Tables
 
-Both formats work great outside of tables too:
+Both toggles and multi-state buttons work great outside of tables too:
 
 **Inline toggles in regular text:**
 Here's my progress: {{toggle:progress1:Task Complete:false}} - Still working on it!
+
+**Multi-state buttons for status tracking:**
+Project status: {{multistate:project1:Current Phase:1:Planning,Development,Testing,Deployment}}
 
 **Label-less toggles for compact use:**
 Quick settings: Dark mode {{toggle:dark::true}} | Notifications {{toggle:notif::false}} | Auto-save {{toggle:save::true}}
@@ -97,6 +118,14 @@ Quick settings: Dark mode {{toggle:dark::true}} | Notifications {{toggle:notif::
 id: standalone-toggle
 label: Project Complete
 state: false
+```
+
+**Block multi-state for detailed tracking:**
+```multistate
+id: project-status
+label: Development Phase
+state: 2
+states: Planning,Design,Development,Testing,Review,Complete
 ```
 
 ## Settings
