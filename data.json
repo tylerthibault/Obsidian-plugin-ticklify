@@ -5,5 +5,15 @@
   "users": [
     "Jordan",
     "Tyler"
-  ]
+  ],
+  "debugMode": true,
+  "stateColorMappings": {
+    "todo": "#f44336",
+    "in progress": "#ff9800",
+    "done": "#4caf50",
+    "review": "#2196f3",
+    "cancelled": "#795548",
+    "urgent": "#ff5722",
+    "delayed": "fff"
+  }
 }
