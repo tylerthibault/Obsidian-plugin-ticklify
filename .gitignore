@@ -1,7 +1,6 @@
 # Obsidian Plugin - Togglify
 
 node_modules/
-main.js
 *.tgz
 .DS_Store
 
